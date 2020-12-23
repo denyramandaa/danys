@@ -39,7 +39,7 @@ $(document).ready(function() {
       new Swiper('.swiper--gallery', {
         effect: 'coverflow',
         centeredSlides: true,
-        slidesPerView: 1.5,
+        slidesPerView: window.innerWidth <= 1024 ? 1.4 : 2.3,
         speed: 800,
         grabCursor: true,
         coverflowEffect: {
