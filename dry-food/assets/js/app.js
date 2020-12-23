@@ -1,7 +1,7 @@
 $(document).ready(function() {
     'use strict';
     function initSwiper() {
-      swiper = new Swiper('.swiper--jumbotron', {
+      new Swiper('.swiper--jumbotron', {
           effect: 'fade',
           followFinger: false,
           centeredSlides: true,
@@ -29,19 +29,71 @@ $(document).ready(function() {
           effect: 'slide',
           followFinger: true,
           centeredSlides: true,
-          slidesPerView: 1.2,
-          spaceBetween: 0,
-          pagination: {
-            el: '.product--pagination',
-            clickable: true
+          slidesPerView: 1.3,
+          spaceBetween: 28,
+          slidesOffsetBefore: 15
+      });
+    }
+
+    function initSwiperGallery(){
+      new Swiper('.swiper--gallery', {
+        effect: 'coverflow',
+        centeredSlides: true,
+        slidesPerView: 1.5,
+        speed: 800,
+        grabCursor: true,
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 350,
+            modifier: 1
+        }
+      });
+    }
+
+    function initSwiperArticle(){
+      new Swiper('.swiper--articles', {
+          effect: 'slide',
+          followFinger: true,
+          centeredSlides: true,
+          slidesPerView: window.innerWidth <= 1024 ? 1 : 3.6,
+          initialSlide: window.innerWidth <= 1024 ? 0 : 1,
+          spaceBetween: 20,
+          slidesOffsetBefore: 15,
+          navigation: {
+            nextEl: '.article-swiper-button .next',
+            prevEl: '.article-swiper-button .prev',
           },
       });
     }
+
+    $(window).scroll(function() {
+      $(".scroll-detection").each(function() {
+        if($(window).scrollTop() >= $(this).offset().top-300 && $(window).scrollTop() <= $(this).offset().top + ($(this).outerHeight()-300)) {
+          $(".navbar-list ."+this.id).addClass('color-brown-d');
+        } else {
+          $(".navbar-list ."+this.id).removeClass('color-brown-d');
+        }
+      });
+    });
+
     initSwiper();
+    initSwiperGallery();
+    initSwiperArticle();
     if(window.innerWidth <= 1024) { 
       initSwiperProducts();
+      $(window).scroll(function() {
+        window.scrollY  > document.getElementsByClassName('jumbotron')[0].clientHeight/2 ? $('.burger-menu-wrap').addClass('active') : $('.burger-menu-wrap').removeClass('active')
+      });
     }
 });
+function gointTo(a) {
+  window.scroll({
+    behavior: 'smooth',
+    left: 0,
+    top: document.getElementById(a).offsetTop
+  })
+}
 function openMenu() {
   $('.header').css('transform', 'translateX(0)')
   $('.overlay-side').fadeIn();

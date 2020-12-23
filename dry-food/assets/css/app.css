@@ -1,5 +1,26 @@
+::-webkit-input-placeholder {
+  color:#533E32 !important;
+}
+
+::-moz-placeholder {
+  color:#533E32 !important;
+}
+
+::-ms-placeholder {
+  color:#533E32 !important;
+}
+
+::placeholder {
+  color:#533E32 !important;
+}
 :focus {
   outline: none;
+}
+.btn-send-msg {
+  background-color: #F0EAE3;
+  border-radius: 8px;
+  color: #533E32;
+  font-weight: bold;
 }
 img {
   width: 100%;
@@ -54,7 +75,7 @@ p {
   margin: 24px;
 }
 .overlay-side {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   z-index: 6;
@@ -75,14 +96,14 @@ p {
 .border-grey-d {
   border-color: #CCCCCC;
 }
-.color-brown-d {
-  color: #533E32;
+.bg-brown-d {
+  background-color: #533E32;
 }
 .color-grey-d {
   color: #999;
 }
-.bg-brown-d {
-  background-color: #533E32;
+.color-brown-d {
+  color: #533E32 !important;
 }
 .bg-brown-d-before {
   display: none;
@@ -114,9 +135,6 @@ p {
 }
 .main {
   padding: 0;
-}
-.jumbotron {
-  background: #f0eae3;
 }
 .bg-cover-center {
   background-position: center;
@@ -174,12 +192,22 @@ p {
   margin-top: 16px;
   cursor: pointer;
 }
-.burger-menu {
-  width: 28px;
+.burger-menu-wrap {
   position: fixed;
-  left: 24px;
-  top: 32px;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 8;
+  padding: 16px 24px;
+  background: transparent;
+  transition: all .5s linear;
+}
+.burger-menu-wrap.active {
+  background: #533e32;
+}
+.burger-menu {
+  position: relative;
+  width: 28px;
 }
 .bg-brw-secondary {
   background-color: #D6C9BB;
@@ -194,11 +222,19 @@ p {
   background-size: cover;
   padding-bottom: 100%;
 }
+.img-article {
+  background-position: center;
+  background-size: cover;
+  padding-bottom: 56.25%;
+}
 .txt-brw {
   color: #533E32;
 }
 .txt-gold-w {
   color: #DBBF80;
+}
+.txt-pink-w {
+  color: #C5AC9F;
 }
 .pt-80-px {
   padding-top: 60px;
@@ -206,11 +242,33 @@ p {
 .swiper--products .swiper-wrapper {
   width: auto;
 }
+.swiper--products a {
+  text-decoration: none;
+}
+.swiper--products .underline {
+  text-decoration: underline;
+}
+.swiper--products .underline:hover {
+  color: #8c6753;
+}
 .py-80-px {
   padding: 60px 0;
 }
 .h2-sub {
   font-size: 48px;
+}
+.bg-cover-center {
+  background-position: center;
+  background-size: cover;
+}
+.articles a {
+  display: block;
+  text-decoration: none;
+}
+.article-swiper-button img {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
 }
 @media screen and (min-width: 1025px) {
   .img-product {
@@ -237,7 +295,7 @@ p {
   .close-button {
     display: none !important;
   }
-  .burger-menu {
+  .burger-menu-wrap {
     display: none;
   }
   .pt-80-px {
@@ -245,5 +303,8 @@ p {
   }
   .py-80-px {
     padding: 80px 0;
+  }
+  footer.footer {
+    display: none;
   }
 }
